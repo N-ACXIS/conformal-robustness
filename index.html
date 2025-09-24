@@ -240,20 +240,13 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            We present the first method capable of photorealistically reconstructing a non-rigidly
-            deforming scene using photos/videos captured casually from mobile phones.
+            We present a true-dynamics-agnostic, statistically rigorous framework for establishing exponential stability and safety guarantees of closed-loop, data-driven nonlinear control. 
           </p>
           <p>
-            Our approach augments neural radiance fields
-            (NeRF) by optimizing an
-            additional continuous volumetric deformation field that warps each observed point into a
-            canonical 5D NeRF.
-            We observe that these NeRF-like deformation fields are prone to local minima, and
-            propose a coarse-to-fine optimization method for coordinate-based models that allows for
-            more robust optimization.
-            By adapting principles from geometry processing and physical simulation to NeRF-like
-            models, we propose an elastic regularization of the deformation field that further
-            improves robustness.
+            Central to our approach is the novel concept of \emph{conformal robustness}, which robustifies the Lyapunov and zeroing barrier certificates of data-driven dynamical systems against model prediction uncertainties using conformal prediction. 
+It quantifies these uncertainties by leveraging rank statistics of prediction scores over system trajectories, without assuming any specific underlying structure of the prediction model or distribution of the uncertainties. 
+With the quantified uncertainty information, we further construct the conformally robust control Lyapunov function (CR-CLF) and control barrier function (CR-CBF), data-driven counterparts of the CLF and CBF, for fully data-driven control with statistical guarantees of finite-horizon exponential stability and safety.
+The performance of the proposed concept is validated in numerical simulations with four benchmark nonlinear control problems. 
           </p>
           <p>
             We show that <span class="dnerf">Nerfies</span> can turn casually captured selfie
