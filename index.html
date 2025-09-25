@@ -37,6 +37,7 @@
   <script src="./static/js/index.js"></script>
   <script>
     window.MathJax = {
+      tags: 'ams', 
       tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]},
       svg: {fontCache: 'global'}
     };
@@ -128,7 +129,7 @@
             \begin{align} \label{eq:true_dyn}
                 \dot{x}=f(x, u),
             \end{align}
-            where $x$ $x$ is the state vector, $u$ is the control input vector, and $f:\mathcal{X} \times \Ucal \rightarrow \mathcal{X}$ is an <i><b>unknown</b></i> locally Lipschitz function.
+            where $x \in \mathcal{X} \subset{\mathbb{R}^n}$ is the state vector, $u \in \mathcal{U}\subset{\mathbb{R}^m}$ is the control input vector, and $f:\mathcal{X} \times \mathcal{U} \rightarrow \mathcal{X}$ is an unknown locally Lipschitz function.\eqref{eq:true_dyn}
           </p>
           <p>
             Central to our approach is the novel concept of <i><b>conformal robustness</i></b>, which robustifies the Lyapunov and zeroing barrier certificates of data-driven dynamical systems against model prediction uncertainties using conformal prediction. 
@@ -179,7 +180,7 @@ If, for any given new sample $(X_{i_{\mathrm{new}}}, Y_{i_{\mathrm{new}}})$, all
         <h2 class="title is-3">Conformally Robust Control Lyapunov Function (CR-CLF)</h2>
         <div class="content has-text-justified">
 Suppose we are given a data-driven model $\hat{f}(x,u)$ of an unknown dynamical system and a conformal quantile $\quantile$ defined in \eqref{eq:quantile}. 
-A $C^1$ function $V:\mathcal{X}\rightarrow\mathbb{R}$ is a conformally robust CLF (CR-CLF) if it satisfies \eqref{clf_cond_1}, and $\forall x\in\mathcal{X}$, $\exists u\in\Ucal$ s.t.
+A $C^1$ function $V:\mathcal{X}\rightarrow\mathbb{R}$ is a conformally robust CLF (CR-CLF) if it satisfies \eqref{clf_cond_1}, and $\forall x\in\mathcal{X}$, $\exists u\in\mathcal{U}$ s.t.
 \begin{align} \label{eq:crclf_cond}
     \tfrac{\partial V}{\partial x}\hat{f}(x,u) + c_3 V(x) + \left\|\tfrac{\partial V}{\partial x} \right\| \cdot \quantile \leq 0.
 \end{align}
@@ -187,7 +188,7 @@ A $C^1$ function $V:\mathcal{X}\rightarrow\mathbb{R}$ is a conformally robust CL
 %
 \begin{theorem} \label{th:crclf_policy}
 Consider a set of control inputs given by
-$\mathbf{K_{CL}}(x) = \big\{u\in\Ucal \big\vert \tfrac{\partial V}{\partial x}\hat{f}(x,u) + c_3 V(x) +\|\tfrac{\partial V}{\partial x}\| \quantile \leq 0 \big\}$.
+$\mathbf{K_{CL}}(x) = \big\{u\in\mathcal{U} \big\vert \tfrac{\partial V}{\partial x}\hat{f}(x,u) + c_3 V(x) +\|\tfrac{\partial V}{\partial x}\| \quantile \leq 0 \big\}$.
 Any locally Lipschitz continuous control policy $u(x)\in \mathbf{K_{CL}}(x)$ renders 
 $\Prob\{ V(x_t) \leq V(x_0) e^{-c_3 t}, \forall t\in[0,T]\} \geq 1-\delta$ and 
 $\Prob\{\|x_t\| \leq \sqrt{c_2/c_1}\|x_0\| e^{-c_3 t/2}, \forall t\in[0,T]\} \geq 1-\delta$, for all $x_0 \in \mathcal{D}$.
