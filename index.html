@@ -169,7 +169,7 @@ q_{1-\delta} := \mathrm{Quantile}\Big(1-\delta; \sum_{i=1}^{N} \tfrac{1}{1+N} \d
 in which $\delta_a$ denotes the point mass probability at $a\in\mathbb{R}\cup\{-\infty, \infty\}$. This quantile can be equivalently interpreted as the $\lceil (1-\delta)(N+1)\rceil$-th smallest nonconformity score in $\{s_i\}_{i\in\mathcal{I}}$. $\lceil\cdot\rceil$ denotes the ceiling function.
 If, for any given new sample $(X_{i_{\mathrm{new}}}, Y_{i_{\mathrm{new}}})$, all the nonconformity scores in $\{s_i\}_{i\in\mathcal{I}\cup i_{\mathrm{new}}}$ are exchangeable, then we have the following statistical bound on the prediction error:
 \begin{align}
-    \mathrm{Pr}\{\|\hat{f}(X_{i_{\mathrm{new}}})-Y_{i_{\mathrm{new}}}\| \leq q_{1-\delta} ~\vert~  S \} \geq 1-\delta.
+    \mathrm{Pr}\left\{\|\hat{f}(X_{i_{\mathrm{new}}})-Y_{i_{\mathrm{new}}}\| \leq q_{1-\delta} ~\vert~  S \right\} \geq 1-\delta.
 \end{align}
         </div>
       </div>
