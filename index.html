@@ -40,16 +40,10 @@
     loader: {load: ['[tex]/mathtools']},
     tex: {
       packages: {'[+]': ['mathtools']},
-      // Enable showonlyrefs
-      Macros: {
-        mathtoolsset: ['{#1}', 1] // Define mathtoolsset macro
-      },
-      // Set showonlyrefs to true
+      tags: 'ams',
+      showOnlyRefs: true,
       inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$', '$$'], ['\\[', '\\]']],
-      processEscapes: true,
-      processEnvironments: true,
-      processRefs: true
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
     }
   };
   </script>
