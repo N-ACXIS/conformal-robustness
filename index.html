@@ -115,7 +115,7 @@
   </div>
 </section>
 
-<section class="section" style="background-color: #f9f9f9;">
+<section class="section" style="background-color: #fcfcfc;">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
@@ -153,7 +153,7 @@ s_i := \|\hat{\mathcal{F}}(X_i)-Y_i\|,~\forall i\in \mathcal{I}.
 \end{align}
 Intuitively, smaller scores imply a more accurate regression model. Given a <i>failure probability</i> $\delta\in(0,1)$, we define the conformal quantile as the $(1-\delta)$th quantile of the empirical distribution of $\{s_i\}_{i\in\mathcal{I}}\cup\infty$, denoted by
 \begin{align} \label{eq:quantile}
-q_{1-\delta} := \mathrm{Quantile}\Big(1-\delta; \sum_{i=1}^{\mathcal{N} \tfrac{1}{1+\mathcal{N} \delta_{s_i} + \tfrac{1}{1+\mathcal{N} \delta_{\infty}\Big),~~
+q_{1-\delta} := \mathrm{Quantile}\Big(1-\delta; \sum_{i=1}^{\mathcal{N}} \tfrac{1}{1+\mathcal{N}} \delta_{s_i} + \tfrac{1}{1+\mathcal{N}} \delta_{\infty}\Big),~~
 \end{align}
 in which $\delta_a$ denotes the point mass probability at $a\in\mathbb{R}\cup\{-\infty, \infty\}$. This quantile can be equivalently interpreted as the $\lceil (1-\delta)(\mathcal{N}+1)\rceil$-th smallest nonconformity score in $\{s_i\}_{i\in\mathcal{I}}$. $\lceil\cdot\rceil$ denotes the ceiling function.
 If, for any given new sample $(X_{i_{\mathrm{new}}}, Y_{i_{\mathrm{new}}})$, all the nonconformity scores in $\{s_i\}_{i\in\Ical\cup i_{\mathrm{new}}}$ are exchangeable, then we have the following statistical bound on the prediction error:
