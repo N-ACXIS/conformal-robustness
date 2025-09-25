@@ -129,7 +129,7 @@
             \begin{align} \label{eq:true_dyn}
                 \dot{x}=f(x, u),
             \end{align}
-            where $x \in \mathcal{X}$ is the state vector, $u \in \Ucal\subset{\mathbb{R}^m}$ is the control input vector, and $f:\mathcal{X} \times \Ucal \rightarrow \mathcal{X}$ is an <i><b>unknown</b></i> locally Lipschitz function.
+            where $x$ is the state vector, $u$ is the control input vector, and $f:\mathcal{X} \times \Ucal \rightarrow \mathcal{X}$ is an <i><b>unknown</b></i> locally Lipschitz function.
           </p>
           <p>
             Central to our approach is the novel concept of <i><b>conformal robustness</i></b>, which robustifies the Lyapunov and zeroing barrier certificates of data-driven dynamical systems against model prediction uncertainties using conformal prediction. 
@@ -154,7 +154,7 @@
         <div class="content has-text-justified">
 Suppose we are given a dataset $S:= \left\{(X_i, Y_i) \right\}_{i\in\mathcal{I}}$, where $X_i$ and $Y_i$ are the features and labels and $N:= |\mathcal{I}|$. Given any regression model $\hat{Y}_i = \hat{\mathcal{F}}(X_i)$, we define the nonconformity scores as 
 \begin{align}
-s_i := \|\hat{\mathcal{F}}(X_i)-Y_i\|,~\forall i\in \mathcal{I}.
+s_i := \|\hat{\mathcal{F}}(X_i)-Y_i\|,~\forall i\in \mathcal{I}.\in
 \end{align}
 Intuitively, smaller scores imply a more accurate regression model. Given a <i>failure probability</i> $\delta\in(0,1)$, we define the conformal quantile as the $(1-\delta)$th quantile of the empirical distribution of $\{s_i\}_{i\in\mathcal{I}}\cup\infty$, denoted by
 \begin{align} \label{eq:quantile}
