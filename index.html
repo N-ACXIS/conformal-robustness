@@ -37,7 +37,9 @@
   <script src="./static/js/index.js"></script>
   <script>
     window.MathJax = {
-      tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]},
+      tags: 'ams',     // enables \label and \eqref
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']]
       svg: {fontCache: 'global'}
     };
   </script>
