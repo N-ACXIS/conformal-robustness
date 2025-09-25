@@ -147,16 +147,16 @@
         <h2 class="title is-3">Conformal Prediction</h2>
         <div class="content has-text-justified">
           <p>
-Suppose we are given a dataset $S:= \left\{(X_i, Y_i) \right\}_{i\in\mathcal{I}}$, where $X_i$ and $Y_i$ are the features and labels and $\mathcal{N}:= |\mathcal{I}|$. Given any regression model $\hat{Y}_i = \hat{\mathcal{F}}(X_i)$, we define the nonconformity scores as 
+Suppose we are given a dataset $S:= \left\{(X_i, Y_i) \right\}_{i\in\mathcal{I}}$, where $X_i$ and $Y_i$ are the features and labels and $N:= |\mathcal{I}|$. Given any regression model $\hat{Y}_i = \hat{\mathcal{F}}(X_i)$, we define the nonconformity scores as 
 \begin{align}
 s_i := \|\hat{\mathcal{F}}(X_i)-Y_i\|,~\forall i\in \mathcal{I}.
 \end{align}
 Intuitively, smaller scores imply a more accurate regression model. Given a <i>failure probability</i> $\delta\in(0,1)$, we define the conformal quantile as the $(1-\delta)$th quantile of the empirical distribution of $\{s_i\}_{i\in\mathcal{I}}\cup\infty$, denoted by
 \begin{align} \label{eq:quantile}
-q_{1-\delta} := \mathrm{Quantile}\Big(1-\delta; \sum_{i=1}^{\mathcal{N}} \tfrac{1}{1+\mathcal{N}} \delta_{s_i} + \tfrac{1}{1+\mathcal{N}} \delta_{\infty}\Big),~~
+q_{1-\delta} := \mathrm{Quantile}\Big(1-\delta; \sum_{i=1}^{N} \tfrac{1}{1+N} \delta_{s_i} + \tfrac{1}{1+N} \delta_{\infty}\Big),~~
 \end{align}
-in which $\delta_a$ denotes the point mass probability at $a\in\mathbb{R}\cup\{-\infty, \infty\}$. This quantile can be equivalently interpreted as the $\lceil (1-\delta)(\mathcal{N}+1)\rceil$-th smallest nonconformity score in $\{s_i\}_{i\in\mathcal{I}}$. $\lceil\cdot\rceil$ denotes the ceiling function.
-If, for any given new sample $(X_{i_{\mathrm{new}}}, Y_{i_{\mathrm{new}}})$, all the nonconformity scores in $\{s_i\}_{i\in\Ical\cup i_{\mathrm{new}}}$ are exchangeable, then we have the following statistical bound on the prediction error:
+in which $\delta_a$ denotes the point mass probability at $a\in\mathbb{R}\cup\{-\infty, \infty\}$. This quantile can be equivalently interpreted as the $\lceil (1-\delta)(N+1)\rceil$-th smallest nonconformity score in $\{s_i\}_{i\in\mathcal{I}}$. $\lceil\cdot\rceil$ denotes the ceiling function.
+If, for any given new sample $(X_{i_{\mathrm{new}}}, Y_{i_{\mathrm{new}}})$, all the nonconformity scores in $\{s_i\}_{i\in\mathcal{I}\cup i_{\mathrm{new}}}$ are exchangeable, then we have the following statistical bound on the prediction error:
 \begin{align}
     \mathrm{Pr}\{\|\hat{f}(X_{i_{\mathrm{new}}})-Y_{i_{\mathrm{new}}}\| \leq q_{1-\delta} ~\vert~  S \} \geq 1-\delta.
 \end{align}
