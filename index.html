@@ -37,12 +37,12 @@
   <script src="./static/js/index.js"></script>
   <script>
     window.MathJax = {
-      loader: {load: ['[tex]/mathtools']},
+      loader: { load: ['[tex]/mathtools'] },
       tex: {
-        packages: {'[+]': ['mathtools']},
+        packages: { '[+]': ['mathtools'] },
         inlineMath: [['$', '$'], ['\\(', '\\)']],
         tags: 'ams',
-        mathtools: {showonlyrefs: true}
+        mathtools: { showonlyrefs: true, showmanualtags: false }
       }
     };
   </script>
@@ -130,11 +130,9 @@
         <div class="content has-text-justified">
           <p>
             We present a true-dynamics-agnostic, statistically rigorous framework for establishing exponential stability and safety guarantees of closed-loop, data-driven nonlinear control. In particular, we consider a nonlinear dynamical system given by 
-          </p>
             \begin{align} \label{eq:true_dyn}
                 \dot{x}=f(x, u),
             \end{align}
-          <p>
             where $x$ is the state, $u$ is the control input, and $f$ is an <i><b>unknown</b></i> locally Lipschitz function.\eqref{eq:true_dyn}
           </p>
           <p>
