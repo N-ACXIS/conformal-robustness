@@ -149,9 +149,9 @@
           <p>
 Suppose we are given a dataset $S:= \left\{(X_i, Y_i) \right\}_{i\in\mathcal{I}}$, where $X_i$ and $Y_i$ are the features and labels and $\mathcal{N}:= |\mathcal{I}|$. Given any regression model $\hat{Y}_i = \hat{\mathcal{F}}(X_i)$, we define the nonconformity scores as 
 \begin{align}
-s_i := \|\hat{\mathcal{F}}(X_i)-Y_i\|~\forall i\in \mathcal{I}.
+s_i := \|\hat{\mathcal{F}}(X_i)-Y_i\|,~\forall i\in \mathcal{I}.
 \end{align}
-Intuitively, smaller scores imply a more accurate regression model. Given a <i>failure probability</i>i> $\delta\in(0,1)$, we define the conformal quantile as the $(1-\delta)$th quantile of the empirical distribution of $\{s_i\}_{i\in\mathcal{I}\cup\infty$, denoted by
+Intuitively, smaller scores imply a more accurate regression model. Given a <i>failure probability</i> $\delta\in(0,1)$, we define the conformal quantile as the $(1-\delta)$th quantile of the empirical distribution of $\{s_i\}_{i\in\mathcal{I}}\cup\infty$, denoted by
 \begin{align} \label{eq:quantile}
 q_{1-\delta} := \mathrm{Quantile}\Big(1-\delta; \sum_{i=1}^{\mathcal{N} \tfrac{1}{1+\mathcal{N} \delta_{s_i} + \tfrac{1}{1+\mathcal{N} \delta_{\infty}\Big),~~
 \end{align}
