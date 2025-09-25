@@ -148,15 +148,15 @@
         <div class="content has-text-justified">
           <p>
 Suppose we are given a dataset $S:= \left\{(X_i, Y_i) \right\}_{i\in\mathcal{I}}$, where $X_i$ and $Y_i$ are the features and labels, and $\mathcal{I}=\{1,2,\dots N\}$ is a set of indices.
-First, we split the dataset $S$ into two sets: a training set $S_{\mathrm{train}}:= \left\{(X_i, Y_i) \right\}_{i\in\mathcal{I}_{\mathrm{train}}}$ for model learning and a calibration set $\Scal:= \left\{(X_i, Y_i) \right\}_{i\in\mathcal{I}_{\mathrm{cal}}}$ for uncertainty quantification.
-$\mathcal{I}_{\mathrm{train}}$ and $\mathcal{I}_{\mathrm{cal}}$ are sets of indices of $\Strain$ and $\Scal$, such that $\mathcal{I}_{\mathrm{train}}\cap\mathcal{I}_{\mathrm{cal}} = \emptyset$ and $\mathcal{I}_{\mathrm{train}}\cup\mathcal{I}_{\mathrm{cal}} = \mathcal{I}$.
+First, we split the dataset $S$ into two sets: a training set $S_{\mathrm{train}}:= \left\{(X_i, Y_i) \right\}_{i\in\mathcal{I}_{\mathrm{train}}}$ for model learning and a calibration set $S_{\mathrm{cal}}:= \left\{(X_i, Y_i) \right\}_{i\in\mathcal{I}_{\mathrm{cal}}}$ for uncertainty quantification.
+$\mathcal{I}_{\mathrm{train}}$ and $\mathcal{I}_{\mathrm{cal}}$ are sets of indices of $S_{\mathrm{train}}$ and $S_{\mathrm{cal}}$, such that $\mathcal{I}_{\mathrm{train}}\cap\mathcal{I}_{\mathrm{cal}} = \emptyset$ and $\mathcal{I}_{\mathrm{train}}\cup\mathcal{I}_{\mathrm{cal}} = \mathcal{I}$.
 The sizes of the two sets are denoted by $\Ntrain:= |\mathcal{I}_{\mathrm{train}}|$ and $\mathcal{N}_{\mathrm{cal}}:= |\mathcal{I}_{\mathrm{cal}}|$. 
 
-Given any regression model $\hat{Y}_i = \hat{f}(X_i)$ trained on $\Strain$, we define the nonconformity scores as $s_i := \|\hat{f}(X_i)-Y_i\|~ \forall i\in \mathcal{I}_{\mathrm{cal}}$.
+Given any regression model $\hat{Y}_i = \hat{f}(X_i)$ trained on $S_{\mathrm{train}}$, we define the nonconformity scores as $s_i := \|\hat{f}(X_i)-Y_i\|~ \forall i\in \mathcal{I}_{\mathrm{cal}}$.
 Intuitively, smaller scores imply a more accurate regression model. 
 Given a \emph{failure probability} $\delta\in(0,1)$, we define the conformal quantile as the $(1-\delta)$th quantile of the empirical distribution of $\{s_i\}_{i\in\mathcal{I}_{\mathrm{cal}}}\cup\infty$ \cite{2021_Angelopoulos_CP-Intro,2023_Barber_CP-BE}, denoted by
 \begin{align} \label{eq:quantile}
-\quantile := \mathrm{Quantile}\Big(1-\delta; \sum_{i=1}^{\mathcal{N}_{\mathrm{cal}}} \tfrac{1}{1+\mathcal{N}_{\mathrm{cal}}} \delta_{s_i} + \tfrac{1}{1+\mathcal{N}_{\mathrm{cal}}} \delta_{\infty}\Big),~~
+q_{1-\delta} := \mathrm{Quantile}\Big(1-\delta; \sum_{i=1}^{\mathcal{N}_{\mathrm{cal}}} \tfrac{1}{1+\mathcal{N}_{\mathrm{cal}}} \delta_{s_i} + \tfrac{1}{1+\mathcal{N}_{\mathrm{cal}}} \delta_{\infty}\Big),~~
 \end{align}
 in which $\delta_a$ denotes the point mass probability at $a\in\mathbb{R}\cup\{-\infty, \infty\}$.
 This quantile can be equivalently interpreted as the $\lceil (1-\delta)(\mathcal{N}_{\mathrm{cal}}+1)\rceil$-th smallest nonconformity score in $\{s_i\}_{i\in\mathcal{I}_{\mathrm{cal}}}$. $\lceil\cdot\rceil$ denotes the ceiling function.
