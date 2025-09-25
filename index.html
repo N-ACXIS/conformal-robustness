@@ -36,15 +36,22 @@
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
   <script>
-    window.MathJax = {
-      loader: { load: ['[tex]/mathtools'] },
-      tex: {
-        packages: { '[+]': ['mathtools'] },
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        tags: 'ams',
-        mathtools: { showonlyrefs: true, showmanualtags: false }
-      }
-    };
+  window.MathJax = {
+    loader: {load: ['[tex]/mathtools']},
+    tex: {
+      packages: {'[+]': ['mathtools']},
+      // Enable showonlyrefs
+      Macros: {
+        mathtoolsset: ['{#1}', 1] // Define mathtoolsset macro
+      },
+      // Set showonlyrefs to true
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      processRefs: true
+    }
+  };
   </script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 
