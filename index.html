@@ -182,11 +182,10 @@ If, for any given new sample $(X_{i_{\mathrm{new}}}, Y_{i_{\mathrm{new}}})$, all
         <h2 class="title is-3">Conformally Robust Control Lyapunov Function (CR-CLF)</h2>
         <div class="content has-text-justified">
 Suppose we are given a data-driven model $\hat{f}(x,u)$ of an unknown dynamical system and a conformal quantile $q_{1-\delta}$ defined in \eqref{eq:quantile}. 
-A $C^1$ function $V:\mathcal{X}\rightarrow\mathbb{R}$ is a conformally robust CLF (CR-CLF) if it satisfies \eqref{clf_cond_1}, and $\forall x\in\mathcal{X}$, $\exists u\in\mathcal{U}$ s.t.
+A $C^1$ function $V:\mathcal{X}\rightarrow\mathbb{R}$ is a conformally robust CLF (CR-CLF) if it satisfies $c_1\|x\|^2 \leq V(x) \leq c_2\|x\|^2$, and $\forall x\in\mathcal{X}$, $\exists u\in\mathcal{U}$ s.t.
 \begin{align} \label{eq:crclf_cond}
     \tfrac{\partial V}{\partial x}\hat{f}(x,u) + c_3 V(x) + \left\|\tfrac{\partial V}{\partial x} \right\| \cdot q_{1-\delta} \leq 0.
 \end{align}
-\end{definition}
 %
 Consider a set of control inputs given by
 $\mathbf{K_{CL}}(x) = \big\{u\in\mathcal{U} \big\vert \tfrac{\partial V}{\partial x}\hat{f}(x,u) + c_3 V(x) +\|\tfrac{\partial V}{\partial x}\| q_{1-\delta} \leq 0 \big\}$.
