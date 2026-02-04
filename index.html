@@ -188,13 +188,11 @@ A $C^1$ function $V:\mathcal{X}\rightarrow\mathbb{R}$ is a conformally robust CL
 \end{align}
 \end{definition}
 %
-\begin{theorem} \label{th:crclf_policy}
 Consider a set of control inputs given by
 $\mathbf{K_{CL}}(x) = \big\{u\in\mathcal{U} \big\vert \tfrac{\partial V}{\partial x}\hat{f}(x,u) + c_3 V(x) +\|\tfrac{\partial V}{\partial x}\| q_{1-\delta} \leq 0 \big\}$.
 Any locally Lipschitz continuous control policy $u(x)\in \mathbf{K_{CL}}(x)$ renders 
 $\Prob\{ V(x_t) \leq V(x_0) e^{-c_3 t}, \forall t\in[0,T]\} \geq 1-\delta$ and 
 $\Prob\{\|x_t\| \leq \sqrt{c_2/c_1}\|x_0\| e^{-c_3 t/2}, \forall t\in[0,T]\} \geq 1-\delta$, for all $x_0 \in \mathcal{D}$.
-\end{theorem}
         </div>
       </div>
     </div>
