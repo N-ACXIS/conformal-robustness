@@ -158,7 +158,7 @@ Suppose we have a random dataset $S:= \left\{(X_i, Y_i) \right\}_{i\in\mathcal{I
 \begin{align}
 s_i := \left\|\hat{\mathcal{F}}(X_i)-Y_i\right\|,~\forall i\in \mathcal{I}.
 \end{align}
-Intuitively, smaller scores imply a more accurate regression model. Given a <i>failure probability</i> $\delta\in(0,1)$, we define the conformal quantile as the $(1-\delta)$-th quantile of the empirical distribution of $\{s_i\}_{i\in\mathcal{I}}\cup\infty$, denoted by
+Intuitively, smaller scores imply a more accurate regression model. Given a failure probability $\delta\in(0,1)$, we define the conformal quantile as the $(1-\delta)$-th quantile of the empirical distribution of $\{s_i\}_{i\in\mathcal{I}}\cup\infty$, denoted by
 \begin{align} \label{eq:quantile}
 q_{1-\delta} := \mathrm{Quantile}\left(1-\delta; \sum_{i=1}^{N} \frac{1}{1+N} \delta_{s_i} + \frac{1}{1+N} \delta_{\infty}\right),
 \end{align}
@@ -182,13 +182,13 @@ If, for any given new sample $(X_{i_{\mathrm{new}}}, Y_{i_{\mathrm{new}}})$, all
         <h2 class="title is-3">Conformally Robust Control Lyapunov Function<br>(CR-CLF)</h2>
         <div class="content has-text-justified">
 Suppose we are given a data-driven model $\hat{f}(x,u)$ of an unknown dynamical system and a conformal quantile $q_{1-\delta}$ defined in \eqref{eq:quantile}. 
-A $C^1$ function $V:\mathcal{X}\rightarrow\mathbb{R}$ is a conformally robust CLF (CR-CLF) if it satisfies $c_1\|x\|^2 \leq V(x) \leq c_2\|x\|^2$, and $\forall x\in\mathcal{X}$, $\exists u\in\mathcal{U}$ s.t.
+A $C^1$ function $V:\mathcal{X}\rightarrow\mathbb{R}$ is a conformally robust control Lyapunov function (CR-CLF) if it satisfies $c_1\|x\|^2 \leq V(x) \leq c_2\|x\|^2$, and $\forall x\in\mathcal{X}$, $\exists u\in\mathcal{U}$ s.t.
 \begin{align} \label{eq:crclf_cond}
     \frac{\partial V}{\partial x}\hat{f}(x,u) + c_3 V(x) + \left\|\frac{\partial V}{\partial x} \right\| \cdot q_{1-\delta} \leq 0.
 \end{align}
 Consider a set of control inputs given by
 \begin{align} 
-    \mathbf{K_{CL}}(x) = \left\{u\in\mathcal{U} \middle\vert \frac{\partial V}{\partial x}\hat{f}(x,u) + c_3 V(x) +\left\|\frac{\partial V}{\partial x}\right\| q_{1-\delta} \leq 0 \right\}.
+    \mathbf{K_{CL}}(x) = \left\{u\in\mathcal{U} ~\middle\vert \frac{\partial V}{\partial x}\hat{f}(x,u) + c_3 V(x) +\left\|\frac{\partial V}{\partial x}\right\| q_{1-\delta} \leq 0 \right\}.
 \end{align}
 Any locally Lipschitz continuous control policy $u(x)\in \mathbf{K_{CL}}(x)$ renders
 \begin{align}
@@ -211,18 +211,19 @@ and then
       <div class="column is-four-fifths">
         <h2 class="title is-3">Conformally Robust Control Barrier Function<br>(CR-CBF)</h2>
         <div class="content has-text-justified">
-Let a safe set $\mathcal{C}\subset\mathcal{X}$ be the 0-superlevel set of a $C^1$ function $h: \mathcal{X}\rightarrow \mathbb{R}$, i.e., $\mathcal{C}=\{ x\in\mathcal{X} | h(x)\geq 0\}$. Suppose we are given a data-driven model $\hat{f}$ and a conformal quantile $q_{1-\delta}$ defined in \eqref{eq:quantile}. 
+Suppose we are given a data-driven model $\hat{f}$ and a conformal quantile $q_{1-\delta}$ defined in \eqref{eq:quantile}.
+Let a safe set $\mathcal{C}\subset\mathcal{X}$ be the 0-superlevel set of a $C^1$ function $h: \mathcal{X}\rightarrow \mathbb{R}$, i.e., $\mathcal{C}=\{ x\in\mathcal{X} | h(x)\geq 0\}$.
 A $C^1$ function $h:\mathcal{X}\rightarrow\mathbb{R}$ is a conformally robust control barrier function (CR-CBF) if the safe set $\mathcal{C}$ is its 0-superlevel set, and $\forall x\in\mathcal{X},~\exists u\in\mathcal{U}$ s.t.
 \begin{align} \label{eq:crcbf_cond}
     \frac{\partial h}{\partial x} \hat{f}(x, u) + \gamma h(x) - \left\|\frac{\partial h}{\partial x} \right\| \cdot q_{1-\delta} \geq 0.
 \end{align}
 Consider a set of control inputs given by
 \begin{align}
-    \mathbf{K_{CB}}(x) = \left\{u \in \Ucal ~\middle\vert \frac{\partial h}{\partial x} \hat{f}(x, u) + \gamma h(x) - \left\|\frac{\partial h}{\partial x} \right\| q_{1-\delta} \geq 0 \right\}.
+    \mathbf{K_{CB}}(x) = \left\{u \in \mathcal{U} ~\middle\vert \frac{\partial h}{\partial x} \hat{f}(x, u) + \gamma h(x) - \left\|\frac{\partial h}{\partial x} \right\| q_{1-\delta} \geq 0 \right\}.
 \end{align}
 Any locally Lipschitz continuous control policy $u(x)\in \mathbf{K_{CB}}(x)$  renders 
 \begin{align}
-    \Prob\left\{ x_t \in \mathcal{C},~\forall t\in[0,T] \mid x_0\in\mathcal{C} \right\} \geq 1-\delta.
+    \mathrm{Pr}\left\{ x_t \in \mathcal{C},~\forall t\in[0,T] \mid x_0\in\mathcal{C} \right\} \geq 1-\delta.
 \end{align}
         </div>
       </div>
@@ -235,21 +236,9 @@ Any locally Lipschitz continuous control policy $u(x)\in \mathbf{K_{CB}}(x)$  re
 
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Case Studies</h2>
+        <h2 class="title is-3">Remarks and Case Studies</h2>
         <div class="content has-text-justified">
-Suppose we are given a dataset $S:= \left\{(X_i, Y_i) \right\}_{i\in\mathcal{I}}$, where $X_i$ and $Y_i$ are the features and labels and $N:= |\mathcal{I}|$. Given any regression model $\hat{Y}_i = \hat{\mathcal{F}}(X_i)$, we define the nonconformity scores as 
-\begin{align}
-s_i := \|\hat{\mathcal{F}}(X_i)-Y_i\|,~\forall i\in \mathcal{I}.
-\end{align}
-Intuitively, smaller scores imply a more accurate regression model. Given a <i>failure probability</i> $\delta\in(0,1)$, we define the conformal quantile as the $(1-\delta)$th quantile of the empirical distribution of $\{s_i\}_{i\in\mathcal{I}}\cup\infty$, denoted by
-\begin{align} \label{eq:quantile}
-q_{1-\delta} := \mathrm{Quantile}\Big(1-\delta; \sum_{i=1}^{N} \frac{1}{1+N} \delta_{s_i} + \frac{1}{1+N} \delta_{\infty}\Big),~~
-\end{align}
-in which $\delta_a$ denotes the point mass probability at $a\in\mathbb{R}\cup\{-\infty, \infty\}$. This quantile can be equivalently interpreted as the $\lceil (1-\delta)(N+1)\rceil$-th smallest nonconformity score in $\{s_i\}_{i\in\mathcal{I}}$. $\lceil\cdot\rceil$ denotes the ceiling function.
-If, for any given new sample $(X_{i_{\mathrm{new}}}, Y_{i_{\mathrm{new}}})$, all the nonconformity scores in $\{s_i\}_{i\in\mathcal{I}\cup i_{\mathrm{new}}}$ are exchangeable, then we have the following statistical bound on the prediction error:
-\begin{align}
-    \mathrm{Pr}\{\|\hat{f}(X_{i_{\mathrm{new}}})-Y_{i_{\mathrm{new}}}\| \leq q_{1-\delta} ~\vert~  S \} \geq 1-\delta.
-\end{align}
+Note that (1) our CR-CLFs and CR-CBFs also accommodate constraint violations, meaning the <i><b>Lyapunov and barrier functions themselves need not be exact</i></b>.
         </div>
       </div>
     </div>
