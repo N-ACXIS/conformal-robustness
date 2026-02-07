@@ -238,7 +238,11 @@ Any locally Lipschitz continuous control policy $u(x)\in \mathbf{K_{CB}}(x)$  re
       <div class="column is-four-fifths">
         <h2 class="title is-3">Remarks and Case Studies</h2>
         <div class="content has-text-justified">
-Note that (1) our CR-CLFs and CR-CBFs also accommodate constraint violations, meaning the <i><b>Lyapunov and barrier functions themselves need not be exact</i></b>.
+          <p>
+          Note that (1) our CR-CLFs and CR-CBFs also accommodate constraint violations, meaning the <i><b>Lyapunov and barrier functions themselves need not be exact</i></b>.
+          </p>
+          In the following numerical simulations with four benchmark nonlinear control problems, we demonstrate the CR-CLFs and CR-CBFs in fully data-driven settings. We also show that they can be synthesized by quadratic programs and neural networks.
+          </p>
         </div>
       </div>
     </div>
@@ -250,8 +254,7 @@ Note that (1) our CR-CLFs and CR-CBFs also accommodate constraint violations, me
         <div class="content">
           <h2 class="title is-4">Inverted Pendulum</h2>
           <p>
-            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
-            would be impossible without nerfies since it would require going through a wall.
+            Inverted pendulum: comparison between the  CR-CLF and regular CLF.
           </p>
           <img src="./static/images/ip.png" alt="experiment" style="width:100%; height:auto;">
         </div>
@@ -264,8 +267,7 @@ Note that (1) our CR-CLFs and CR-CBFs also accommodate constraint violations, me
         <div class="columns is-centered">
           <div class="column content">
             <p>
-              As a byproduct of our method, we can also solve the matting problem by ignoring
-              samples that fall outside of a bounding box during rendering.
+              Adaptive cruise control: comparison between the CR-CBF and regular CBF.
             </p>
             <img src="./static/images/acc.png" alt="experiment" style="width:100%; height:auto;">
           </div>
@@ -281,8 +283,7 @@ Note that (1) our CR-CLFs and CR-CBFs also accommodate constraint violations, me
         <div class="content">
           <h2 class="title is-4">Cart-Pole Balancing</h2>
           <p>
-            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
-            would be impossible without nerfies since it would require going through a wall.
+            Dubins car collision avoidance: comparison between the neural CR-CBF and regular neural CBF.
           </p>
           <img src="./static/images/cartpole.png" alt="experiment" style="width:100%; height:auto;">
         </div>
@@ -295,8 +296,7 @@ Note that (1) our CR-CLFs and CR-CBFs also accommodate constraint violations, me
         <div class="columns is-centered">
           <div class="column content">
             <p>
-              As a byproduct of our method, we can also solve the matting problem by ignoring
-              samples that fall outside of a bounding box during rendering.
+              Cartpole: comparison between the neural CR-CLF and regular neural CLF.
             </p>
             <img src="./static/images/dubins.png" alt="experiment" style="width:100%; height:auto;">
           </div>
