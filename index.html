@@ -190,8 +190,11 @@ Consider a set of control inputs given by
 \begin{align} 
     \mathbf{K_{CL}}(x) = \big\{u\in\mathcal{U} \big\vert \frac{\partial V}{\partial x}\hat{f}(x,u) + c_3 V(x) +\|\frac{\partial V}{\partial x}\| q_{1-\delta} \leq 0 \big\}.
 \end{align}
-Any locally Lipschitz continuous control policy $u(x)\in \mathbf{K_{CL}}(x)$ renders 
-$\mathrm{Pr}\{ V(x_t) \leq V(x_0) e^{-c_3 t}, \forall t\in[0,T]\} \geq 1-\delta$ and then
+Any locally Lipschitz continuous control policy $u(x)\in \mathbf{K_{CL}}(x)$ renders
+\begin{align}
+    \mathrm{Pr}\{ V(x_t) \leq V(x_0) e^{-c_3 t}, \forall t\in[0,T]\} \geq 1-\delta
+\end{align}
+and then
 \begin{align} 
     \mathrm{Pr}\{\|x_t\| \leq \sqrt{c_2/c_1}\|x_0\| e^{-c_3 t/2}, \forall t\in[0,T]\} \geq 1-\delta$, for all $x_0 \in \mathcal{D}.
 \end{align}
