@@ -179,7 +179,7 @@ If, for any given new sample $(X_{i_{\mathrm{new}}}, Y_{i_{\mathrm{new}}})$, all
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Conformally Robust Control Lyapunov Function (CR-CLF)</h2>
+        <h2 class="title is-3">Conformally Robust Control Lyapunov Function<br>(CR-CLF)</h2>
         <div class="content has-text-justified">
 Suppose we are given a data-driven model $\hat{f}(x,u)$ of an unknown dynamical system and a conformal quantile $q_{1-\delta}$ defined in \eqref{eq:quantile}. 
 A $C^1$ function $V:\mathcal{X}\rightarrow\mathbb{R}$ is a conformally robust CLF (CR-CLF) if it satisfies $c_1\|x\|^2 \leq V(x) \leq c_2\|x\|^2$, and $\forall x\in\mathcal{X}$, $\exists u\in\mathcal{U}$ s.t.
@@ -211,18 +211,27 @@ and then
       <div class="column is-four-fifths">
         <h2 class="title is-3">Conformally Robust Control Barrier Function (CR-CLF)</h2>
         <div class="content has-text-justified">
-Suppose we are given a dataset $S:= \left\{(X_i, Y_i) \right\}_{i\in\mathcal{I}}$, where $X_i$ and $Y_i$ are the features and labels and $N:= |\mathcal{I}|$. Given any regression model $\hat{Y}_i = \hat{\mathcal{F}}(X_i)$, we define the nonconformity scores as 
-\begin{align}
-s_i := \|\hat{\mathcal{F}}(X_i)-Y_i\|,~\forall i\in \mathcal{I}.
+Let a safe set $\mathcal{C}\subset\mathcal{X}$ be the 0-superlevel set of a $C^1$ function $h: \mathcal{X}\rightarrow \mathbb{R}$, i.e., $\mathcal{C}=\{ x\in\mathcal{X} | h(x)\geq 0\}$.
+
+Suppose we are given a data-driven model $\hat{f}$ and a conformal quantile $\quantile$ defined in \eqref{eq:quantile}. 
+A $C^1$ function $h:\Xcal\rightarrow\mathbb{R}$ is a conformally robust control barrier function (CR-CBF) if the safe set $\mathcal{C}$ is its 0-superlevel set, and $\forall x\in\Xcal,~\exists u\in\Ucal$ s.t.
+\begin{align} \label{eq:crcbf_cond}
+    \tfrac{\partial h}{\partial x} \hat{f}(x, u) + \gamma h(x) - \left\|\tfrac{\partial h}{\partial x} \right\| \cdot \quantile \geq 0.
 \end{align}
-Intuitively, smaller scores imply a more accurate regression model. Given a <i>failure probability</i> $\delta\in(0,1)$, we define the conformal quantile as the $(1-\delta)$th quantile of the empirical distribution of $\{s_i\}_{i\in\mathcal{I}}\cup\infty$, denoted by
-\begin{align} \label{eq:quantile}
-q_{1-\delta} := \mathrm{Quantile}\Big(1-\delta; \sum_{i=1}^{N} \frac{1}{1+N} \delta_{s_i} + \frac{1}{1+N} \delta_{\infty}\Big),~~
-\end{align}
-in which $\delta_a$ denotes the point mass probability at $a\in\mathbb{R}\cup\{-\infty, \infty\}$. This quantile can be equivalently interpreted as the $\lceil (1-\delta)(N+1)\rceil$-th smallest nonconformity score in $\{s_i\}_{i\in\mathcal{I}}$. $\lceil\cdot\rceil$ denotes the ceiling function.
-If, for any given new sample $(X_{i_{\mathrm{new}}}, Y_{i_{\mathrm{new}}})$, all the nonconformity scores in $\{s_i\}_{i\in\mathcal{I}\cup i_{\mathrm{new}}}$ are exchangeable, then we have the following statistical bound on the prediction error:
-\begin{align}
-    \mathrm{Pr}\{\|\hat{f}(X_{i_{\mathrm{new}}})-Y_{i_{\mathrm{new}}}\| \leq q_{1-\delta} ~\vert~  S \} \geq 1-\delta.
+
+          
+          If there exists an extended class-$\mathcal{K}_\infty$ function\footnote{An extended class-$\mathcal{K}_\infty$ function is a continuous, strictly increasing function $\alpha: \mathbb{R}\rightarrow\mathbb{R}$ which satisfies $\alpha(0)=0$.} 
+$\alpha$ s.t. $\forall x\in \mathcal{X}$,
+%\begin{align} \label{cbf_cond_2}
+     %\sup _{u \in \mathcal{U}} \dot{h}(x, u) = 
+     $\sup_{u \in \mathcal{U}}\left[\frac{\partial h}{\partial x}f(x,u)\right] \geq -\alpha(h(x))$,  
+%\end{align}
+then $h$ is a control barrier function (CBF) of \eqref{eq:true_dyn} on $\mathcal{C}$.
+In this paper, we consider $\alpha(h(x))=\gamma h(x)$, where $\gamma\in\mathbb{R}_{>0}$.
+Suppose we are given a data-driven model $\hat{f}$ and a conformal quantile $\quantile$ defined in \eqref{eq:quantile}. 
+A $C^1$ function $h:\mathcal{X}\rightarrow\mathbb{R}$ is a conformally robust control barrier function (CR-CBF) if the safe set $\mathcal{C}$ is its 0-superlevel set, and $\forall x\in\mathcal{X},~\exists u\in\mathcal{U}$ s.t.
+\begin{align} \label{eq:crcbf_cond}
+    \frac{\partial h}{\partial x} \hat{f}(x, u) + \gamma h(x) - \left\|\frac{\partial h}{\partial x} \right\| \cdot \quantile \geq 0.
 \end{align}
         </div>
       </div>
