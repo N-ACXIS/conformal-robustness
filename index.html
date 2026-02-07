@@ -163,7 +163,7 @@ Intuitively, smaller scores imply a more accurate regression model. Given a <i>f
 q_{1-\delta} := \mathrm{Quantile}\Big(1-\delta; \sum_{i=1}^{N} \frac{1}{1+N} \delta_{s_i} + \frac{1}{1+N} \delta_{\infty}\Big),
 \end{align}
 in which $\delta_a$ denotes the point mass probability at $a\in\mathbb{R}\cup\{-\infty, \infty\}$. This quantile can be equivalently interpreted as the $\lceil (1-\delta)(N+1)\rceil$-th smallest nonconformity score in $\{s_i\}_{i\in\mathcal{I}}$, where $\lceil\cdot\rceil$ denotes the ceiling function.
-If, for any given new sample $(X_{i_{\mathrm{new}}}, Y_{i_{\mathrm{new}}})$, all the nonconformity scores in $\{s_i\}_{i\in\mathcal{I}\cup i_{\mathrm{new}}}$ are exchangeable, then we have the following statistical bound on the prediction error:
+If, for any given new sample $(X_{i_{\mathrm{new}}}, Y_{i_{\mathrm{new}}})$, all the nonconformity scores in $\{s_i\}_{i\in\mathcal{I}\cup i_{\mathrm{new}}}$ are exchangeable, then we have the following statistical bound:
 \begin{align}
     \mathrm{Pr}\left\{\left\|\hat{\mathcal{F}}(X_{i_{\mathrm{new}}})-Y_{i_{\mathrm{new}}}\right\| \leq q_{1-\delta} \right\} \geq 1-\delta.
 \end{align}
