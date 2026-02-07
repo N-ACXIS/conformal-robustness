@@ -154,7 +154,7 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Conformal Prediction</h2>
         <div class="content has-text-justified">
-Suppose we are given a dataset $S:= \left\{(X_i, Y_i) \right\}_{i\in\mathcal{I}}$, where $X_i$ and $Y_i$ are the features and labels and $N:= |\mathcal{I}|$. Given any regression model $\hat{Y}_i = \hat{\mathcal{F}}(X_i)$, we define the nonconformity scores as 
+Suppose we have a random dataset $S:= \left\{(X_i, Y_i) \right\}_{i\in\mathcal{I}}$, where $X_i$ and $Y_i$ are the features and labels and $N:= |\mathcal{I}|$. Given any regression model $\hat{Y}_i = \hat{\mathcal{F}}(X_i)$, we define the nonconformity scores as 
 \begin{align}
 s_i := \|\hat{\mathcal{F}}(X_i)-Y_i\|,~\forall i\in \mathcal{I}.
 \end{align}
@@ -165,7 +165,7 @@ q_{1-\delta} := \mathrm{Quantile}\Big(1-\delta; \sum_{i=1}^{N} \frac{1}{1+N} \de
 in which $\delta_a$ denotes the point mass probability at $a\in\mathbb{R}\cup\{-\infty, \infty\}$. This quantile can be equivalently interpreted as the $\lceil (1-\delta)(N+1)\rceil$-th smallest nonconformity score in $\{s_i\}_{i\in\mathcal{I}}$. $\lceil\cdot\rceil$ denotes the ceiling function.
 If, for any given new sample $(X_{i_{\mathrm{new}}}, Y_{i_{\mathrm{new}}})$, all the nonconformity scores in $\{s_i\}_{i\in\mathcal{I}\cup i_{\mathrm{new}}}$ are exchangeable, then we have the following statistical bound on the prediction error:
 \begin{align}
-    \mathrm{Pr}\left\{\|\hat{f}(X_{i_{\mathrm{new}}})-Y_{i_{\mathrm{new}}}\| \leq q_{1-\delta} ~\vert~  S \right\} \geq 1-\delta.
+    \mathrm{Pr}\left\{\|\hat{\mathcal{F}}(X_{i_{\mathrm{new}}})-Y_{i_{\mathrm{new}}}\| \leq q_{1-\delta} \right\} \geq 1-\delta.
 \end{align}
         </div>
       </div>
