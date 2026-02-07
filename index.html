@@ -209,29 +209,20 @@ and then
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Conformally Robust Control Barrier Function (CR-CLF)</h2>
+        <h2 class="title is-3">Conformally Robust Control Barrier Function<br>(CR-CBF)</h2>
         <div class="content has-text-justified">
-Let a safe set $\mathcal{C}\subset\mathcal{X}$ be the 0-superlevel set of a $C^1$ function $h: \mathcal{X}\rightarrow \mathbb{R}$, i.e., $\mathcal{C}=\{ x\in\mathcal{X} | h(x)\geq 0\}$.
-
-Suppose we are given a data-driven model $\hat{f}$ and a conformal quantile $\quantile$ defined in \eqref{eq:quantile}. 
-A $C^1$ function $h:\Xcal\rightarrow\mathbb{R}$ is a conformally robust control barrier function (CR-CBF) if the safe set $\mathcal{C}$ is its 0-superlevel set, and $\forall x\in\Xcal,~\exists u\in\Ucal$ s.t.
-\begin{align} \label{eq:crcbf_cond}
-    \tfrac{\partial h}{\partial x} \hat{f}(x, u) + \gamma h(x) - \left\|\tfrac{\partial h}{\partial x} \right\| \cdot \quantile \geq 0.
-\end{align}
-
-          
-          If there exists an extended class-$\mathcal{K}_\infty$ function\footnote{An extended class-$\mathcal{K}_\infty$ function is a continuous, strictly increasing function $\alpha: \mathbb{R}\rightarrow\mathbb{R}$ which satisfies $\alpha(0)=0$.} 
-$\alpha$ s.t. $\forall x\in \mathcal{X}$,
-%\begin{align} \label{cbf_cond_2}
-     %\sup _{u \in \mathcal{U}} \dot{h}(x, u) = 
-     $\sup_{u \in \mathcal{U}}\left[\frac{\partial h}{\partial x}f(x,u)\right] \geq -\alpha(h(x))$,  
-%\end{align}
-then $h$ is a control barrier function (CBF) of \eqref{eq:true_dyn} on $\mathcal{C}$.
-In this paper, we consider $\alpha(h(x))=\gamma h(x)$, where $\gamma\in\mathbb{R}_{>0}$.
-Suppose we are given a data-driven model $\hat{f}$ and a conformal quantile $\quantile$ defined in \eqref{eq:quantile}. 
+Let a safe set $\mathcal{C}\subset\mathcal{X}$ be the 0-superlevel set of a $C^1$ function $h: \mathcal{X}\rightarrow \mathbb{R}$, i.e., $\mathcal{C}=\{ x\in\mathcal{X} | h(x)\geq 0\}$. Suppose we are given a data-driven model $\hat{f}$ and a conformal quantile $q_{1-\delta}$ defined in \eqref{eq:quantile}. 
 A $C^1$ function $h:\mathcal{X}\rightarrow\mathbb{R}$ is a conformally robust control barrier function (CR-CBF) if the safe set $\mathcal{C}$ is its 0-superlevel set, and $\forall x\in\mathcal{X},~\exists u\in\mathcal{U}$ s.t.
 \begin{align} \label{eq:crcbf_cond}
-    \frac{\partial h}{\partial x} \hat{f}(x, u) + \gamma h(x) - \left\|\frac{\partial h}{\partial x} \right\| \cdot \quantile \geq 0.
+    \frac{\partial h}{\partial x} \hat{f}(x, u) + \gamma h(x) - \left\|\frac{\partial h}{\partial x} \right\| \cdot q_{1-\delta} \geq 0.
+\end{align}
+Consider a set of control inputs given by
+\begin{align}
+    \mathbf{K_{CB}}(x) = \left\{u \in \Ucal ~\middle\vert \frac{\partial h}{\partial x} \hat{f}(x, u) + \gamma h(x) - \left\|\frac{\partial h}{\partial x} \right\| q_{1-\delta} \geq 0 \right\}.
+\end{align}
+Any locally Lipschitz continuous control policy $u(x)\in \mathbf{K_{CB}}(x)$  renders 
+\begin{align}
+    \Prob\left\{ x_t \in \mathcal{C},~\forall t\in[0,T] \mid x_0\in\mathcal{C} \right\} \geq 1-\delta.
 \end{align}
         </div>
       </div>
