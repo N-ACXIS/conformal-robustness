@@ -160,7 +160,7 @@ s_i := \left\|\hat{\mathcal{F}}(X_i)-Y_i\right\|,~\forall i\in \mathcal{I}.
 \end{align}
 Intuitively, smaller scores imply a more accurate regression model. Given a <i>failure probability</i> $\delta\in(0,1)$, we define the conformal quantile as the $(1-\delta)$-th quantile of the empirical distribution of $\{s_i\}_{i\in\mathcal{I}}\cup\infty$, denoted by
 \begin{align} \label{eq:quantile}
-q_{1-\delta} := \mathrm{Quantile}\Big(1-\delta; \sum_{i=1}^{N} \frac{1}{1+N} \delta_{s_i} + \frac{1}{1+N} \delta_{\infty}\Big),
+q_{1-\delta} := \mathrm{Quantile}\left(1-\delta; \sum_{i=1}^{N} \frac{1}{1+N} \delta_{s_i} + \frac{1}{1+N} \delta_{\infty}\right),
 \end{align}
 in which $\delta_a$ denotes the point mass probability at $a\in\mathbb{R}\cup\{-\infty, \infty\}$. This quantile can be equivalently interpreted as the $\lceil (1-\delta)(N+1)\rceil$-th smallest nonconformity score in $\{s_i\}_{i\in\mathcal{I}}$, where $\lceil\cdot\rceil$ denotes the ceiling function.
 If, for any given new sample $(X_{i_{\mathrm{new}}}, Y_{i_{\mathrm{new}}})$, all the nonconformity scores in $\{s_i\}_{i\in\mathcal{I}\cup i_{\mathrm{new}}}$ are exchangeable, then we have the following statistical bound:
@@ -188,15 +188,15 @@ A $C^1$ function $V:\mathcal{X}\rightarrow\mathbb{R}$ is a conformally robust CL
 \end{align}
 Consider a set of control inputs given by
 \begin{align} 
-    \mathbf{K_{CL}}(x) = \left\{u\in\mathcal{U} \middle\vert \frac{\partial V}{\partial x}\hat{f}(x,u) + c_3 V(x) +\|\frac{\partial V}{\partial x}\| q_{1-\delta} \leq 0 \right\}.
+    \mathbf{K_{CL}}(x) = \left\{u\in\mathcal{U} \middle\vert \frac{\partial V}{\partial x}\hat{f}(x,u) + c_3 V(x) +\left\|\frac{\partial V}{\partial x}\right\| q_{1-\delta} \leq 0 \right\}.
 \end{align}
 Any locally Lipschitz continuous control policy $u(x)\in \mathbf{K_{CL}}(x)$ renders
 \begin{align}
-    \mathrm{Pr}\{ V(x_t) \leq V(x_0) e^{-c_3 t}, \forall t\in[0,T]\} \geq 1-\delta
+    \mathrm{Pr}\left\{ V(x_t) \leq V(x_0) e^{-c_3 t}, \forall t\in[0,T]\right\} \geq 1-\delta
 \end{align}
 and then
 \begin{align} 
-    \mathrm{Pr}\{\|x_t\| \leq \sqrt{c_2/c_1}\|x_0\| e^{-c_3 t/2}, \forall t\in[0,T]\} \geq 1-\delta$, for all $x_0 \in \mathcal{D}.
+    \mathrm{Pr}\left\{\|x_t\| \leq \sqrt{c_2/c_1}\|x_0\| e^{-c_3 t/2}, \forall t\in[0,T]\right\} \geq 1-\delta,~\forall x_0 \in \mathcal{D}.
 \end{align}
         </div>
       </div>
@@ -209,7 +209,7 @@ and then
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Conformal Prediction</h2>
+        <h2 class="title is-3">Conformally Robust Control Barrier Function (CR-CLF)</h2>
         <div class="content has-text-justified">
 Suppose we are given a dataset $S:= \left\{(X_i, Y_i) \right\}_{i\in\mathcal{I}}$, where $X_i$ and $Y_i$ are the features and labels and $N:= |\mathcal{I}|$. Given any regression model $\hat{Y}_i = \hat{\mathcal{F}}(X_i)$, we define the nonconformity scores as 
 \begin{align}
